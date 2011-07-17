@@ -43,10 +43,12 @@ private
   end
 
   def slug_link
-    ensure_slash_prefix slug
+    ensure_slash_prefix(slug)
   end
   
   def ensure_slash_prefix(str)
+    str = str.match(/^\/static/) ? str : "/static#{str}"
     str.index('/') == 0 ? str : '/' + str
   end
+
 end
